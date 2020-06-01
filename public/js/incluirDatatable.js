@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('.dataTable').DataTable({
         "paging": true,
+        "responsive": true,
         "lengthChange": true,
         "searching": true,
         "ordering": true,

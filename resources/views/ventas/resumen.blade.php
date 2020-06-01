@@ -21,7 +21,7 @@
                     <button type="button" class="btn btn-primary" id="boton" onclick="realizarResumen()" style="margin-top: 38px;">Consultar</button>
                 </div>
             </div> 
-            <table id="tabla" class="table table-striped table-bordered" style="display: none;">
+            <table id="tabla" class="table table-striped table-bordered table-responsive" style="display: none;">
                 <thead>
                     <tr>
                         <th scope="col">Vendedora</th>
@@ -31,7 +31,7 @@
                         <th scope="col">Total M. neto</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="width: 100%;">
                 </tbody>
             </table>
         </div>
@@ -68,18 +68,24 @@
             data:{desde:desde, hasta:hasta},
             success:function(result){
                 $('#tabla').css({
-                    "display": "block",
-                    "width": "100%"
+                    "width": "100%",
+                    "display": "block"
+                    
                 });
                 var html = "";
                 for (let i = 0; i < result.length; i++) {
+                    var prendasHtml = "";
+                    for (let j = 0; j < result[i][1].length; j++) {
+                        prendasHtml += '<span class="badge badge-pill badge-secondary">'+result[i][1][j]+'</span> ';                        
+                    }
                     html += '<tr>'+
-                                    '<td>'+result[i][0]+'</td>'+
-                                    '<td>'+result[i][1]+'</td>'+
-                                    '<td><span class="badge badge-pill badge-light">$'+result[i][2]+'</span></td>'+
-                                    '<td><span class="badge badge-pill badge-info">$'+result[i][3]+'</span></td>'+
-                                    '<td><span class="badge badge-pill badge-success">$'+result[i][4]+'</span></td>'+
-                                '</tr>'
+                                    '<td style="width: 15%">'+result[i][0]+'</td>'+
+                                    '<td style="width: 55%">'+prendasHtml+'</td>'+
+                                    '<td style="width: 10%"><h5><b><span class="badge badge-pill badge-light">$'+result[i][2]+'</span></b></h5></td>'+
+                                    '<td style="width: 10%"><h5><b><span class="badge badge-pill badge-info">$'+result[i][3]+'</span></b></h5></td>'+
+                                    '<td style="width: 10%"><h5><b><span class="badge badge-pill badge-success">$'+result[i][4]+'</span></b></h5></td>'+
+                                '</tr>';
+                    prendasHtml = '';
                 }
                 $('#tabla tbody').html(html);
             }

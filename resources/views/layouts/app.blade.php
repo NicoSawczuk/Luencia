@@ -26,6 +26,8 @@
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('extensiones/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 
+    {{-- DataTables responsive --}}
+    <link rel="stylesheet" href="{{ asset('extensiones/datatables-responsive/css/responsive.bootstrap.min.css') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -49,7 +51,7 @@
             <div class="container">
 
                 <ul class="navbar-nav">
-                    
+
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('home') }}">
                             <b>Luencia</b>
@@ -96,12 +98,12 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">Ingresar</a>
                         </li>
                         @if (Route::has('register'))
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
+                        </li> --}}
                         @endif
                         @else
                         <li class="nav-item dropdown">
@@ -113,7 +115,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    Cerrar sesión
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -144,6 +146,10 @@
 
     {{-- Transformador de Datatale a espaniol --}}
     <script src="{{asset('js/incluirDatatable.js')}}"></script>
+
+        {{-- Datatable responsive --}}
+        <script src="{{asset('extensiones/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('extensiones/datatables-responsive/js/responsive.bootstrap.min.js')}}"></script>
 
     {{-- Multiselect --}}
     <script src="{{asset('extensiones/select2/js/select2.full.min.js')}}"></script>
