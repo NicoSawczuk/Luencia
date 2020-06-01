@@ -15,6 +15,6 @@ class Prenda extends Model
     }
 
     public function venta(){
-        return $this->belongsTo(Venta::class, 'venta_id');
+        return $this->hasOne(Venta::class);
     }
 }

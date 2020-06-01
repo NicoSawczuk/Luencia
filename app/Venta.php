@@ -14,8 +14,8 @@ class Venta extends Model
         return $this->belongsTo(Vendedora::class, 'vendedora_id');
     }
 
-    public function prendas(){
-        return $this->hasMany(Prenda::class, 'id');
+    public function prenda(){
+        return $this->belongsTo(Prenda::class);
     }
 
 }

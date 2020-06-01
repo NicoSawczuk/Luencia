@@ -38,7 +38,7 @@
     <form action="{{route('ventas.store')}}" method="POST">
         @csrf
         <div class="card-body">
-            <select class="duallistbox" multiple="multiple" name="prendas[]">
+            <select class="duallistbox" style="height: 220px;" multiple="multiple" name="prendas[]">
                 @foreach ($prendas as $prenda)
                 <option value="{{$prenda->id}}">{{$prenda->id}} - {{$prenda->detalle}} {{$prenda->color}} -
                     ${{$prenda->precio_venta}}</option>
@@ -46,7 +46,7 @@
             </select>
             <br>
             <div id="rowDetalle" class="row" style="display: none;">
-                <div class="col-6">
+                <div class="col-md-12">
                     <p class="lead">Detalle de venta</p>
 
                     <div class="table-responsive">
@@ -58,6 +58,7 @@
                     </div>
                 </div>
             </div>
+            <br>
         </div>
     </form>
 </div>
@@ -119,13 +120,13 @@
                 for (let i = 0; i < result.length; i++) {
                     montoTotal += parseFloat(result[i]['precio_venta']);
                     html += '<tr>'+
-                                '<th style="width:80%">'+result[i]['detalle']+' '+result[i]['color']+'</th>'+
+                                '<th style="width:80%">'+result[i]['detalle']+' '+result[i]['color']+' ('+result[i]['id']+')</th>'+
                                 '<td>$'+result[i]['precio_venta']+'</td>'+
                             '</tr>';
                 }
                 $('#tablaDetalle').html(html);
                 var htmlTotal = '<tr class="alert alert-success">'+
-                                    '<th style="width:80%">Total de venta:</th>'+
+                                    '<th style="width:100%">Total de venta:</th>'+
                                     '<td><b>$'+montoTotal+'</b></td>'+
                                 '</tr>';
                 $('#tablaDetalle').append(htmlTotal);

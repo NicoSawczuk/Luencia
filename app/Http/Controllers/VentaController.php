@@ -56,6 +56,7 @@ class VentaController extends Controller
             $venta->prenda_id = $prenda;
             $venta->save();
             Prenda::where('id',$prenda)->update(['vendida'=>1]);
+            unset($prendas, $prenda);
         }
         
         return redirect(route('home'))->with('success', 'Venta realizada');
@@ -105,6 +106,13 @@ class VentaController extends Controller
     public function destroy(Venta $venta)
     {
         //
+    }
+
+    public function anular(Venta $venta)
+    {
+        Prenda::where('id',$venta->prenda_id)->update(['vendida'=>0]);
+        $venta->delete();
+        return redirect()->back()->with('success','Venta anualada correctamente');
     }
 
     public function consultarResumen(Request $request)

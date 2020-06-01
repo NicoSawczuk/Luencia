@@ -41,6 +41,7 @@ Route::get('prendas/consultar_prenda', 'PrendaController@consultarPrenda')->name
 Route::get('ventas', 'VentaController@index')->name('ventas.index');
 Route::get('ventas/resumen', 'VentaController@indexResumen')->name('ventas.indexResumen');
 Route::get('ventas/create', 'VentaController@create')->name('ventas.create');
+Route::put('ventas/{venta}/anular', 'VentaController@anular')->name('ventas.anular');
 Route::post('ventas', 'VentaController@store')->name('ventas.store');
 Route::get('ventas/{venta}/edit', 'VentaController@edit')->name('ventas.edit');
 Route::put('ventas/{venta}', 'VentaController@update')->name('ventas.update');
