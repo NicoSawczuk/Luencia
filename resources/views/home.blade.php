@@ -34,7 +34,16 @@
 </div>
 <br>
 <div class="card">
-    <div class="card-header bg-success">Realizar una venta</div>
+    <div class="card-header bg-success">
+        Realizar una venta
+        <div class="float-right">
+            <a role="button" id="popover" data-container="body" title="Ayuda" data-toggle="popover"
+                data-placement="left"
+                data-content="Para realizar una venta debe seleccionar aquellas prendas que desea vender y presionar en el botón 'Finalizar venta'">
+                <h5><i title="Ayuda" class="fal fa-question-circle"></i></h5>
+            </a>
+        </div>
+    </div>
     <form action="{{route('ventas.store')}}" method="POST">
         @csrf
         <div class="card-body">
@@ -90,6 +99,11 @@
     </div>
 
     @push('scripts')
+    <script>
+        $(function () {
+            $('#popover').popover();
+        })
+    </script>
     <script>
         $(function(){
             

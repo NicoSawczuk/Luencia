@@ -5,7 +5,15 @@
 @section('content')
 
     <div class="card">
-        <div class="card-header">Resumen de ventas
+        <div class="card-header">
+            Resumen de ventas
+            <div class="float-right">
+                <a role="button" id="popover" data-container="body" title="Ayuda" data-toggle="popover"
+                    data-placement="left"
+                    data-content="Para ver su resumen de ventas debe seleccionar las fechas entre las cuales quiere que se muestre el resumen y luego presionar en el boton 'Consultar'">
+                    <h5><i title="Ayuda" class="fal fa-question-circle"></i></h5>
+                </a>
+            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -41,6 +49,11 @@
 @endsection
 
 @push('scripts')
+<script>
+    $(function () {
+        $('#popover').popover();
+    })
+</script>
   <script>
     $(document).ready(function () {
       $("#desde").change(function () {
