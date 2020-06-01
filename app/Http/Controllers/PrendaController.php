@@ -63,7 +63,7 @@ class PrendaController extends Controller
         $prenda->save();
 
         if ($prenda->save()) {
-            return redirect()->back()->with('success', 'Prenda creada con éxito');
+            return redirect()->back()->with('success', 'Prenda creada con éxito. ID: '.$prenda->id);
         }
         return redirect()->back()->withErrors('No se pudo crear la prenda');
     }
